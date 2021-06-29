@@ -46,7 +46,7 @@ public class ItemBuilder {
         return durability((short) data);
     }
 
-    @SuppressWarnings("deprecation")
+    @Deprecated
     public ItemBuilder durability(short durability) {
         this.item.setDurability(durability);
         return this;
