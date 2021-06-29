@@ -1,4 +1,4 @@
-package me.aglerr.lazylibs;
+package me.aglerr.lazylibs.libs;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

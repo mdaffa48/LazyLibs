@@ -1,4 +1,4 @@
-package me.aglerr.lazylibs;
+package me.aglerr.lazylibs.libs;
 
 import com.google.common.base.Preconditions;
 import com.google.gson.JsonElement;

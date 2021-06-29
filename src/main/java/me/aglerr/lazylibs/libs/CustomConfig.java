@@ -1,5 +1,6 @@
-package me.aglerr.lazylibs;
+package me.aglerr.lazylibs.libs;
 
+import me.aglerr.lazylibs.LazyLibs;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
