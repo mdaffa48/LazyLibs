@@ -74,6 +74,17 @@ public class Common {
         return numberFormat.format(d);
     }
 
+    public static boolean hasOffhand(){
+        return !Bukkit.getVersion().contains("1.7") &&
+                !Bukkit.getVersion().contains("1.8");
+    }
+
+    public static List<String> getOnlinePlayersByName(){
+        List<String> players = new ArrayList<>();
+        Bukkit.getOnlinePlayers().forEach(player -> players.add(player.getName()));
+        return players;
+    }
+
     public static String shortFormat(double d){
         if (d < 1000L) {
             return numberFormat(d);
@@ -94,11 +105,6 @@ public class Common {
             return numberFormat(d / 1000000000000000L) + "Q";
         }
         return String.valueOf((long) d);
-    }
-
-    public static boolean hasOffhand(){
-        return !Bukkit.getVersion().contains("1.7") &&
-                !Bukkit.getVersion().contains("1.8");
     }
 
     public static String formatTime(int seconds) {
