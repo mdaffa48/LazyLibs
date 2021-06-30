@@ -28,6 +28,52 @@
                 <version>3.4.1</version>
             </extension>
         </extensions>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <configuration>
+                    <relocations>
+                        <relocation>
+                            <pattern>com.cryptomorin.xseries</pattern>
+                            <!-- Be sure to change the package below -->
+                            <shadedPattern>me.aglerr.lazylibs.libs</shadedPattern>
+                        </relocation>
+                    </relocations>
+                    <!-- Here you can remove the classes you don't use. -->
+                    <!-- These are some examples. -->
+                    <!-- The "unused" package and SkullCacheListener are excluded by default. -->
+                    <!-- Some utilities such a XItemStack depend on more than 3 other classes, so watch out. -->
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>com/cryptomorin/xseries/XBiome*</exclude>
+                                <exclude>com/cryptomorin/xseries/NMSExtras*</exclude>
+                                <exclude>com/cryptomorin/xseries/NoteBlockMusic*</exclude>
+                                <exclude>com/cryptomorin/xseries/SkullCacheListener*</exclude>
+                                <exclude>com/cryptomorin/xseries/XBiome*</exclude>
+                                <exclude>com/cryptomorin/xseries/XBlock*</exclude>
+                                <exclude>com/cryptomorin/xseries/XEnchantment*</exclude>
+                                <exclude>com/cryptomorin/xseries/XEntity*</exclude>
+                                <exclude>com/cryptomorin/xseries/XItemStack*</exclude>
+                                <exclude>com/cryptomorin/xseries/XMaterialUtil*</exclude>
+                                <exclude>com/cryptomorin/xseries/XPotion*</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 
     <repositories>
@@ -50,6 +96,11 @@
             <groupId>com.intellij</groupId>
             <artifactId>annotations</artifactId>
             <version>12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.cryptomorin</groupId>
+            <artifactId>XSeries</artifactId>
+            <version>8.1.0</version>
         </dependency>
     </dependencies>
 
