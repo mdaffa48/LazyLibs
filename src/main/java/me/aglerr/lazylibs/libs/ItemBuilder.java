@@ -2,11 +2,13 @@ package me.aglerr.lazylibs.libs;
 
 import org.bukkit.Color;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -156,6 +158,36 @@ public class ItemBuilder {
 
     public ItemBuilder customModelData(int data){
         this.meta.setCustomModelData(data);
+        return this;
+    }
+
+    public ItemBuilder pdc(NamespacedKey key, String s){
+        this.meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, s);
+        return this;
+    }
+
+    public ItemBuilder pdc(NamespacedKey key, Double d){
+        this.meta.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, d);
+        return this;
+    }
+
+    public ItemBuilder pdc(NamespacedKey key, Float f){
+        this.meta.getPersistentDataContainer().set(key, PersistentDataType.FLOAT, f);
+        return this;
+    }
+
+    public ItemBuilder pdc(NamespacedKey key, Integer i){
+        this.meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, i);
+        return this;
+    }
+
+    public ItemBuilder pdc(NamespacedKey key, Long l){
+        this.meta.getPersistentDataContainer().set(key, PersistentDataType.LONG, l);
+        return this;
+    }
+
+    public ItemBuilder pdc(NamespacedKey key, Byte b){
+        this.meta.getPersistentDataContainer().set(key, PersistentDataType.BYTE, b);
         return this;
     }
 
