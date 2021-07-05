@@ -194,6 +194,31 @@ public class LazyInventory implements InventoryHolder {
     }
 
     /**
+     * Add an {@link ItemStack} to the inventory on multiples slots with a click handler.
+     *
+     * @param slots   The slots where to add the item
+     * @param item    The item to add.
+     * @param handler The click handler for the item
+     */
+    public void setItems(List<Integer> slots, ItemStack item, Consumer<InventoryClickEvent> handler){
+        for(int slot : slots){
+            setItem(slot, item, handler);
+        }
+    }
+
+    /**
+     * Add an {@link ItemStack} to the inventory on multiples slots with a click handler.
+     *
+     * @param slots   The slots where to add the item
+     * @param item    The item to add.
+     */
+    public void setItems(List<Integer> slots, ItemStack item){
+        for(int slot : slots){
+            setItem(slot, item);
+        }
+    }
+
+    /**
      * Remove an {@link ItemStack} from the inventory.
      *
      * @param slot The slot where to remove the item
