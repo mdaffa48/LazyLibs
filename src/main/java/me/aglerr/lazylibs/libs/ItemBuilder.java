@@ -91,7 +91,7 @@ public class ItemBuilder {
     }
 
     public ItemBuilder name(String name) {
-        this.meta.setDisplayName(name);
+        this.meta.setDisplayName(Common.color(name));
         return this;
     }
 
@@ -104,7 +104,7 @@ public class ItemBuilder {
     }
 
     public ItemBuilder lore(List<String> lore) {
-        this.meta.setLore(lore);
+        this.meta.setLore(Common.color(lore));
         return this;
     }
 
