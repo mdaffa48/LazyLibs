@@ -5,10 +5,13 @@ import org.bukkit.ChatColor;
 
 import java.text.NumberFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Common {
 
+    protected static final Pattern HEX_PATTERN = Pattern.compile("&#(\\w{5}[0-9a-f])");
     protected static Locale locale = Locale.ENGLISH;
     protected static String PREFIX = "[LazyLibs]";
 
@@ -28,6 +31,26 @@ public class Common {
 
     public static List<String> color(List<String> strings) {
         return strings.stream().map(Common::color).collect(Collectors.toList());
+    }
+
+    public static String hex(String textToTranslate){
+        Matcher matcher = HEX_PATTERN.matcher(textToTranslate);
+        StringBuffer buffer = new StringBuffer();
+
+        while(matcher.find()){
+            matcher.appendReplacement(buffer,
+                    net.md_5.bungee.api.ChatColor.of("#" + matcher.group(1)).toString());
+        }
+
+        return ChatColor.translateAlternateColorCodes('&', matcher.appendTail(buffer).toString());
+    }
+
+    public static List<String> hex(List<String> textToTranslate){
+        List<String> translated = new ArrayList<>();
+        for(String text : textToTranslate){
+            translated.add(hex(text));
+        }
+        return translated;
     }
 
     public static void log(ChatColor chatColor, String... args){
